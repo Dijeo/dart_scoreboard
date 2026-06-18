@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Dart Skor Tablosu Grafiği</title>
+    <!-- TV Scoreboard Aesthetic Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- GSAP for animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+</head>
+
+<body>
+    <div id="scoreboard" class="scoreboard">
+        <!-- Header for match target -->
+        <div class="scoreboard-header">
+            <div class="target-info">
+                <span>HEDEF <span id="setTargetDisplay">1</span> SET</span>
+                <span class="dot-separator">•</span>
+                <span>HEDEF <span id="legTargetDisplay">1</span> LEG</span>
+            </div>
+            <div class="col-headers">
+                <div class="col-header-sets">S</div>
+                <div class="col-header-legs">L</div>
+                <div class="col-header-score">P</div>
+            </div>
+        </div>
+
+        <!-- Player 1 Row -->
+        <div class="player-row" id="p1Box">
+            <div class="turn-indicator" id="p1TurnIndicator"></div>
+            <div class="name-container">
+                <div class="name" id="p1Name">OYUNCU 1</div>
+                <div class="checkout hidden" id="p1Checkout">T20 T20 D20</div>
+            </div>
+            <div class="stats-col legs-col" id="p1Legs">0</div>
+            <div class="stats-col sets-col" id="p1Sets">0</div>
+
+            <div class="score-col" id="p1Score">501</div>
+        </div>
+
+        <!-- Player 2 Row -->
+        <div class="player-row" id="p2Box">
+            <div class="turn-indicator" id="p2TurnIndicator"></div>
+            <div class="name-container">
+                <div class="name" id="p2Name">OYUNCU 2</div>
+                <div class="checkout hidden" id="p2Checkout">T20 T20 D20</div>
+            </div>
+            <div class="stats-col legs-col" id="p2Legs">0</div>
+            <div class="stats-col sets-col" id="p2Sets">0</div>
+
+            <div class="score-col" id="p2Score">501</div>
+        </div>
+        <!-- 180 Animasyon Konteyneri -->
+        <div id="oneEightyAnim" class="anim-scoreboard hidden">
+            <div class="char-container">
+                <span class="char">1</span>
+                <span class="char">8</span>
+                <span class="char">0</span>
+            </div>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

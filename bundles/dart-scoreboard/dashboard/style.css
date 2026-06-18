@@ -1,0 +1,152 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #2b2b2b;
+    color: #ffffff;
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+h2, h3 {
+    margin: 0 0 10px 0;
+}
+
+hr {
+    border: 0;
+    border-top: 1px solid #444;
+    width: 100%;
+    margin: 5px 0;
+}
+
+.row {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+    align-items: center;
+}
+
+.player-names {
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.player-input {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+input[type="text"], input[type="number"] {
+    background: #444;
+    border: 1px solid #555;
+    color: #fff;
+    padding: 5px;
+    border-radius: 4px;
+}
+
+button {
+    background: #007bff;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* Status Section */
+.status-section {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+}
+
+.player-status {
+    flex: 1;
+    background: #333;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 0 5px;
+    border: 2px solid transparent;
+}
+
+.player-status.active {
+    border-color: #28a745;
+    box-shadow: 0 0 10px rgba(40, 167, 69, 0.5);
+}
+
+.score {
+    font-size: 32px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #ffc107;
+}
+
+.stats {
+    font-size: 12px;
+    color: #bbb;
+}
+
+/* Control Section */
+.control-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.active-turn {
+    background: #1e1e1e;
+    padding: 10px;
+    text-align: center;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.numpad-input {
+    display: flex;
+    gap: 10px;
+}
+
+.numpad-input input {
+    flex: 1;
+    font-size: 18px;
+}
+
+.quick-buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 5px;
+}
+
+.quick-btn {
+    background: #444;
+}
+.quick-btn:hover {
+    background: #666;
+}
+
+.action-buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.primary-btn { background: #28a745; width: 100%; }
+.primary-btn:hover { background: #218838; }
+
+.warning-btn { background: #ffc107; color: #000; flex: 1;}
+.warning-btn:hover { background: #e0a800; }
+
+.danger-btn { background: #dc3545; flex: 1;}
+.danger-btn:hover { background: #c82333; }

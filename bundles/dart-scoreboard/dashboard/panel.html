@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dart Skor Tablosu Kontrolü</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Ayarlar Bölümü -->
+        <section class="settings-section">
+            <h3>Maç Ayarları</h3>
+            <div class="row">
+                <label>Hedef Set: <input type="number" id="setTarget" min="1" value="1"></label>
+                <label>Hedef Leg: <input type="number" id="legTarget" min="1" value="1"></label>
+                <button id="updateSettingsBtn">Ayarları Güncelle</button>
+            </div>
+            <div class="row player-names">
+                <div class="player-input">
+                    <label>Oyuncu 1 Adı:</label>
+                    <input type="text" id="p1Name" value="Oyuncu 1">
+                </div>
+                <div class="player-input">
+                    <label>Oyuncu 2 Adı:</label>
+                    <input type="text" id="p2Name" value="Oyuncu 2">
+                </div>
+                <button id="updateNamesBtn">İsimleri Güncelle</button>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Mevcut Durum Bölümü -->
+        <section class="status-section">
+            <div class="player-status" id="p1StatusBox">
+                <h2 id="p1Display">Oyuncu 1</h2>
+                <div class="score" id="p1Score">501</div>
+                <div class="stats">Set: <span id="p1Sets">0</span> | Leg: <span id="p1Legs">0</span></div>
+            </div>
+            
+            <div class="player-status" id="p2StatusBox">
+                <h2 id="p2Display">Oyuncu 2</h2>
+                <div class="score" id="p2Score">501</div>
+                <div class="stats">Set: <span id="p2Sets">0</span> | Leg: <span id="p2Legs">0</span></div>
+            </div>
+        </section>
+
+        <hr>
+
+        <!-- Kontrol ve Numpad Bölümü -->
+        <section class="control-section">
+            <div class="active-turn">
+                Mevcut Sıra: <strong id="currentTurnDisplay">Oyuncu 1</strong>
+                <button id="switchTurnBtn" class="primary-btn" style="margin-left: 15px; padding: 5px 10px; font-size: 0.8em;">Sırayı Değiştir</button>
+            </div>
+            
+            <div class="numpad-input">
+                <input type="number" id="scoreInput" placeholder="Skor girin (0-180)" min="0" max="180">
+                <button id="submitScoreBtn" class="primary-btn">SKORU GİR</button>
+            </div>
+
+            <div class="quick-buttons">
+                <button class="quick-btn" data-val="180">180</button>
+                <button class="quick-btn" data-val="140">140</button>
+                <button class="quick-btn" data-val="100">100</button>
+                <button class="quick-btn" data-val="85">85</button>
+                <button class="quick-btn" data-val="60">60</button>
+                <button class="quick-btn" data-val="45">45</button>
+                <button class="quick-btn" data-val="26">26</button>
+                <button class="quick-btn" data-val="0">0 (Karavana)</button>
+            </div>
+
+            <div class="action-buttons">
+                <button id="undoBtn" class="warning-btn">SON İŞLEMİ GERİ AL</button>
+                <button id="resetBtn" class="danger-btn">MAÇI SIFIRLA</button>
+            </div>
+
+            <div class="scale-control" style="margin-top: 15px; padding-top: 15px; border-top: 1px solid #444;">
+                <label style="display: block; margin-bottom: 5px;">Grafik Ölçeği: <span id="scaleDisplay">1.0</span>x</label>
+                <input type="range" id="overlayScale" min="0.5" max="2.0" step="0.05" value="1.0" style="width: 100%;">
+            </div>
+        </section>
+    </div>
+
+    <script src="panel.js"></script>
+</body>
+</html>

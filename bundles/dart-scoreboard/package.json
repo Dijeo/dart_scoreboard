@@ -1,0 +1,25 @@
+{
+  "name": "dart-scoreboard",
+  "version": "1.0.0",
+  "description": "Professional 501 Darts Scoreboard with GSAP animations",
+  "author": "Antigravity",
+  "license": "MIT",
+  "nodecg": {
+    "compatibleRange": "^2.0.0",
+    "dashboardPanels": [
+      {
+        "name": "control",
+        "title": "Dart Scoreboard Control",
+        "width": 3,
+        "file": "panel.html"
+      }
+    ],
+    "graphics": [
+      {
+        "file": "overlay.html",
+        "width": 1920,
+        "height": 1080
+      }
+    ]
+  }
+}
