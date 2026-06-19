@@ -9,9 +9,16 @@ const overlayScale = nodecg.Replicant('overlayScale', { defaultValue: 1.0 });
 
 // DOM Elementleri
 const p1NameInput = document.getElementById('p1Name');
+const p1TeamInput = document.getElementById('p1Team');
 const p2NameInput = document.getElementById('p2Name');
+const p2TeamInput = document.getElementById('p2Team');
 const setTargetInput = document.getElementById('setTarget');
 const legTargetInput = document.getElementById('legTarget');
+const overlayAlignmentSelect = document.getElementById('overlayAlignment');
+const outchartAlignmentSelect = document.getElementById('outchartAlignment');
+const hideSetsToggle = document.getElementById('hideSetsToggle');
+const sponsorTextInput = document.getElementById('sponsorTextInput');
+const showSponsorToggle = document.getElementById('showSponsorToggle');
 
 const p1Score = document.getElementById('p1Score');
 const p2Score = document.getElementById('p2Score');
@@ -40,11 +47,18 @@ NodeCG.waitForReplicants(matchInfo, player1State, player2State, currentTurn, ove
     matchInfo.on('change', (newVal) => {
         if (!newVal) return;
         p1NameInput.value = newVal.player1Name;
+        if(p1TeamInput) p1TeamInput.value = newVal.player1Team || '';
         p2NameInput.value = newVal.player2Name;
+        if(p2TeamInput) p2TeamInput.value = newVal.player2Team || '';
         p1Display.innerText = newVal.player1Name;
         p2Display.innerText = newVal.player2Name;
         setTargetInput.value = newVal.setTarget;
         legTargetInput.value = newVal.legTarget;
+        if (overlayAlignmentSelect) overlayAlignmentSelect.value = newVal.overlayAlignment || 'left';
+        if (outchartAlignmentSelect) outchartAlignmentSelect.value = newVal.outchartAlignment || 'left';
+        if (hideSetsToggle) hideSetsToggle.checked = newVal.hideSets || false;
+        if (sponsorTextInput) sponsorTextInput.value = newVal.sponsorText || '';
+        if (showSponsorToggle) showSponsorToggle.checked = newVal.showSponsor !== false;
         updateTurnDisplay();
     });
 
@@ -90,11 +104,18 @@ function updateTurnDisplay() {
 document.getElementById('updateSettingsBtn').addEventListener('click', () => {
     matchInfo.value.setTarget = parseInt(setTargetInput.value, 10);
     matchInfo.value.legTarget = parseInt(legTargetInput.value, 10);
+    matchInfo.value.overlayAlignment = overlayAlignmentSelect.value;
+    matchInfo.value.outchartAlignment = outchartAlignmentSelect.value;
+    matchInfo.value.hideSets = hideSetsToggle.checked;
+    matchInfo.value.sponsorText = sponsorTextInput.value;
+    matchInfo.value.showSponsor = showSponsorToggle.checked;
 });
 
 document.getElementById('updateNamesBtn').addEventListener('click', () => {
     matchInfo.value.player1Name = p1NameInput.value;
+    matchInfo.value.player1Team = p1TeamInput.value;
     matchInfo.value.player2Name = p2NameInput.value;
+    matchInfo.value.player2Team = p2TeamInput.value;
 });
 
 // Skor Gönderme

@@ -13,13 +13,17 @@
 
 <body>
     <div id="scoreboard" class="scoreboard">
+        <!-- Sponsor Banner -->
+        <div class="sponsor-banner" id="sponsorBanner">Dart Tourney</div>
+
         <!-- Header for match target -->
         <div class="scoreboard-header">
             <div class="target-info">
-                <span>HEDEF <span id="setTargetDisplay">1</span> SET</span>
-                <span class="dot-separator">•</span>
-                <span>HEDEF <span id="legTargetDisplay">1</span> LEG</span>
+                <span class="set-target-info"><span id="setTargetDisplay">1</span> SET</span>
+                <span class="dot-separator set-target-info">•</span>
+                <span><span id="legTargetDisplay">1</span> LEG</span>
             </div>
+            <span class="brand-url">darttourney.app</span>
             <div class="col-headers">
                 <div class="col-header-sets">S</div>
                 <div class="col-header-legs">L</div>
@@ -29,26 +33,28 @@
 
         <!-- Player 1 Row -->
         <div class="player-row" id="p1Box">
+            <div class="checkout-popout" id="p1Checkout">T20 T20 D20</div>
             <div class="turn-indicator" id="p1TurnIndicator"></div>
             <div class="name-container">
+                <div class="team-name" id="p1Team"></div>
                 <div class="name" id="p1Name">OYUNCU 1</div>
-                <div class="checkout hidden" id="p1Checkout">T20 T20 D20</div>
             </div>
-            <div class="stats-col legs-col" id="p1Legs">0</div>
             <div class="stats-col sets-col" id="p1Sets">0</div>
+            <div class="stats-col legs-col" id="p1Legs">0</div>
 
             <div class="score-col" id="p1Score">501</div>
         </div>
 
         <!-- Player 2 Row -->
         <div class="player-row" id="p2Box">
+            <div class="checkout-popout" id="p2Checkout">T20 T20 D20</div>
             <div class="turn-indicator" id="p2TurnIndicator"></div>
             <div class="name-container">
+                <div class="team-name" id="p2Team"></div>
                 <div class="name" id="p2Name">OYUNCU 2</div>
-                <div class="checkout hidden" id="p2Checkout">T20 T20 D20</div>
             </div>
-            <div class="stats-col legs-col" id="p2Legs">0</div>
             <div class="stats-col sets-col" id="p2Sets">0</div>
+            <div class="stats-col legs-col" id="p2Legs">0</div>
 
             <div class="score-col" id="p2Score">501</div>
         </div>

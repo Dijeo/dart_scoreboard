@@ -5,9 +5,16 @@ module.exports = function (nodecg) {
     const matchInfo = nodecg.Replicant('matchInfo', {
         defaultValue: {
             player1Name: 'Oyuncu 1',
+            player1Team: '',
             player2Name: 'Oyuncu 2',
+            player2Team: '',
             setTarget: 1,
-            legTarget: 1
+            legTarget: 1,
+            overlayAlignment: 'left',
+            outchartAlignment: 'left',
+            hideSets: false,
+            sponsorText: 'Dart Tourney',
+            showSponsor: true
         }
     });
 

@@ -13,16 +13,45 @@
             <div class="row">
                 <label>Hedef Set: <input type="number" id="setTarget" min="1" value="1"></label>
                 <label>Hedef Leg: <input type="number" id="legTarget" min="1" value="1"></label>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <label>Grafik Konumu: 
+                    <select id="overlayAlignment">
+                        <option value="left">Sol</option>
+                        <option value="right">Sağ</option>
+                    </select>
+                </label>
+                <label style="margin-left: 15px;">Outchart Yönü: 
+                    <select id="outchartAlignment">
+                        <option value="left">Sol</option>
+                        <option value="right">Sağ</option>
+                    </select>
+                </label>
+                <label style="margin-left: 15px;">
+                    <input type="checkbox" id="hideSetsToggle"> Set Skorunu Gizle
+                </label>
+            </div>
+            <div class="row" style="margin-top: 10px;">
+                <label>Sponsor Metni: <input type="text" id="sponsorTextInput" value="Dart Tourney"></label>
+                <label style="margin-left: 15px;">
+                    <input type="checkbox" id="showSponsorToggle" checked> Sponsoru Göster
+                </label>
+            </div>
+            <div class="row" style="margin-top: 10px;">
                 <button id="updateSettingsBtn">Ayarları Güncelle</button>
             </div>
             <div class="row player-names">
                 <div class="player-input">
                     <label>Oyuncu 1 Adı:</label>
                     <input type="text" id="p1Name" value="Oyuncu 1">
+                    <label>Takımı:</label>
+                    <input type="text" id="p1Team" value="" placeholder="Takım 1">
                 </div>
                 <div class="player-input">
                     <label>Oyuncu 2 Adı:</label>
                     <input type="text" id="p2Name" value="Oyuncu 2">
+                    <label>Takımı:</label>
+                    <input type="text" id="p2Team" value="" placeholder="Takım 2">
                 </div>
                 <button id="updateNamesBtn">İsimleri Güncelle</button>
             </div>

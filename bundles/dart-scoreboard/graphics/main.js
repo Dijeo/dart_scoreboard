@@ -8,7 +8,10 @@ const currentTurn = nodecg.Replicant('currentTurn');
 const overlayScale = nodecg.Replicant('overlayScale', { defaultValue: 1.0 });
 
 // DOM
+const scoreboardEl = document.getElementById('scoreboard');
+const sponsorBanner = document.getElementById('sponsorBanner');
 const p1Name = document.getElementById('p1Name');
+const p1Team = document.getElementById('p1Team');
 const p1Score = document.getElementById('p1Score');
 const p1Sets = document.getElementById('p1Sets');
 const p1Legs = document.getElementById('p1Legs');
@@ -16,6 +19,7 @@ const p1Checkout = document.getElementById('p1Checkout');
 const p1Box = document.getElementById('p1Box');
 
 const p2Name = document.getElementById('p2Name');
+const p2Team = document.getElementById('p2Team');
 const p2Score = document.getElementById('p2Score');
 const p2Sets = document.getElementById('p2Sets');
 const p2Legs = document.getElementById('p2Legs');
@@ -42,9 +46,30 @@ NodeCG.waitForReplicants(matchInfo, player1State, player2State, currentTurn, ove
     matchInfo.on('change', (newVal) => {
         if (!newVal) return;
         p1Name.innerText = newVal.player1Name;
+        p1Team.innerText = newVal.player1Team || '';
         p2Name.innerText = newVal.player2Name;
+        p2Team.innerText = newVal.player2Team || '';
         setTargetDisplay.innerText = newVal.setTarget;
         legTargetDisplay.innerText = newVal.legTarget;
+        
+        scoreboardEl.classList.remove('align-left', 'align-right', 'outchart-left', 'outchart-right');
+        scoreboardEl.classList.add(`align-${newVal.overlayAlignment || 'left'}`);
+        scoreboardEl.classList.add(`outchart-${newVal.outchartAlignment || 'left'}`);
+        
+        if (newVal.hideSets) {
+            scoreboardEl.classList.add('hide-sets');
+        } else {
+            scoreboardEl.classList.remove('hide-sets');
+        }
+        
+        if (sponsorBanner) {
+            sponsorBanner.innerText = newVal.sponsorText || '';
+            if (newVal.showSponsor !== false && newVal.sponsorText) {
+                sponsorBanner.classList.remove('hidden');
+            } else {
+                sponsorBanner.classList.add('hidden');
+            }
+        }
     });
 
     player1State.on('change', (newVal, oldVal) => {
@@ -61,9 +86,21 @@ NodeCG.waitForReplicants(matchInfo, player1State, player2State, currentTurn, ove
         if (newVal === 'p1') {
             p1Box.classList.add('active');
             p2Box.classList.remove('active');
+            if (player1State.value && player1State.value.score <= 170 && checkoutRoutes[player1State.value.score]) {
+                p1Checkout.classList.add('active');
+            } else {
+                p1Checkout.classList.remove('active');
+            }
+            p2Checkout.classList.remove('active');
         } else {
             p2Box.classList.add('active');
             p1Box.classList.remove('active');
+            if (player2State.value && player2State.value.score <= 170 && checkoutRoutes[player2State.value.score]) {
+                p2Checkout.classList.add('active');
+            } else {
+                p2Checkout.classList.remove('active');
+            }
+            p1Checkout.classList.remove('active');
         }
     });
 
@@ -101,9 +138,11 @@ function updatePlayerUI(playerNum, newVal, oldVal) {
     // Checkout önerisini göster/gizle
     if (newVal.score <= 170 && checkoutRoutes[newVal.score]) {
         checkoutElem.innerText = checkoutRoutes[newVal.score];
-        checkoutElem.classList.remove('hidden');
+        if (currentTurn.value === `p${playerNum}`) {
+            checkoutElem.classList.add('active');
+        }
     } else {
-        checkoutElem.classList.add('hidden');
+        checkoutElem.classList.remove('active');
     }
 }
 

@@ -12,10 +12,7 @@ body {
 .scoreboard {
     position: absolute;
     bottom: 60px;
-    left: 60px;
-    /* TV style: bottom-left */
-    transform-origin: bottom left;
-    /* So that scaling keeps it anchored */
+    /* TV style */
     display: flex;
     flex-direction: column;
     width: 650px;
@@ -23,7 +20,49 @@ body {
     background: rgba(15, 15, 15, 0.95);
     border: 1px solid rgba(255, 255, 255, 0.05);
     border-radius: 6px;
-    overflow: hidden;
+    overflow: visible;
+}
+
+.scoreboard.align-left {
+    left: 60px;
+    right: auto;
+    transform-origin: bottom left;
+}
+
+.scoreboard.align-right {
+    right: 60px;
+    left: auto;
+    transform-origin: bottom right;
+}
+
+.sponsor-banner {
+    position: absolute;
+    top: -26px;
+    left: 20px;
+    background: rgba(15, 15, 15, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: none;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    color: #ffcc00;
+    font-size: 13px;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding: 4px 15px;
+    letter-spacing: 1px;
+    box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.3);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+.scoreboard.align-right .sponsor-banner {
+    left: auto;
+    right: 20px;
+}
+
+.sponsor-banner.hidden {
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
 }
 
 .scoreboard-header {
@@ -37,6 +76,9 @@ body {
     font-weight: 500;
     height: 35px;
     border-bottom: 2px solid #0f192b;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
+    position: relative;
 }
 
 .target-info {
@@ -51,6 +93,28 @@ body {
 .dot-separator {
     margin: 0 10px;
     color: rgba(255, 255, 255, 0.3);
+}
+
+.brand-url {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    align-items: center;
+    height: 100%;
+    color: rgba(255, 255, 255, 0.45);
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    text-transform: lowercase;
+    font-weight: 400;
+}
+
+/* Hide Sets Option */
+.scoreboard.hide-sets .col-header-sets,
+.scoreboard.hide-sets .sets-col,
+.scoreboard.hide-sets .set-target-info,
+.scoreboard.hide-sets .dot-separator {
+    display: none;
 }
 
 .col-headers {
@@ -82,6 +146,19 @@ body {
     position: relative;
     background: linear-gradient(to right, rgba(25, 25, 25, 1) 0%, rgba(15, 15, 15, 1) 100%);
     transition: background 0.3s;
+}
+
+#p2Box {
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+}
+
+#p2Box .turn-indicator {
+    border-bottom-left-radius: 6px;
+}
+
+#p2Box .score-col {
+    border-bottom-right-radius: 6px;
 }
 
 .player-row.active {
@@ -127,26 +204,52 @@ body {
     color: #ffffff;
 }
 
-.checkout {
-    font-size: 16px;
-    color: #00ffcc;
-    letter-spacing: 1px;
+.team-name {
+    font-size: 14px;
     font-weight: 500;
-    opacity: 1;
-    height: 20px;
-    margin-top: 2px;
-    transition: height 0.3s, opacity 0.3s, margin-top 0.3s;
+    text-transform: uppercase;
+    color: #bbb;
+    letter-spacing: 1px;
+    line-height: 1;
+    margin-bottom: 2px;
 }
 
-.checkout.hidden {
+.checkout-popout {
+    position: absolute;
+    top: 20%;
+    height: 60%;
+    width: 150px;
+    background: #ffffff;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    font-weight: 700;
+    color: #000000;
+    letter-spacing: 1px;
+    z-index: -1;
+    transition: transform 0.5s ease-out, opacity 0.5s ease-out;
     opacity: 0;
-    height: 0;
-    margin-top: 0;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
 }
 
-/* Aktif oyunda checkout varsa ismi azıcık yukarı kaydır */
-.player-row:has(.checkout:not(.hidden)) .name {
-    transform: translateY(-2px);
+.scoreboard.outchart-left .checkout-popout {
+    left: 0;
+}
+
+.scoreboard.outchart-left .checkout-popout.active {
+    transform: translateX(-100%);
+    opacity: 1;
+}
+
+.scoreboard.outchart-right .checkout-popout {
+    right: 0;
+}
+
+.scoreboard.outchart-right .checkout-popout.active {
+    transform: translateX(100%);
+    opacity: 1;
 }
 
 .stats-col {
@@ -210,19 +313,19 @@ body {
     font-size: 140px;
     font-weight: 900;
     color: #fff;
-    text-shadow: 
-        0 1px 0 #ccc, 
-        0 2px 0 #c9c9c9, 
-        0 3px 0 #bbb, 
-        0 4px 0 #b9b9b9, 
-        0 5px 0 #aaa, 
-        0 6px 1px rgba(0,0,0,.1), 
-        0 0 5px rgba(0,0,0,.1), 
-        0 1px 3px rgba(0,0,0,.3), 
-        0 3px 5px rgba(0,0,0,.2), 
-        0 5px 10px rgba(0,0,0,.25), 
-        0 10px 10px rgba(0,0,0,.2), 
-        0 20px 20px rgba(0,0,0,.15);
+    text-shadow:
+        0 1px 0 #ccc,
+        0 2px 0 #c9c9c9,
+        0 3px 0 #bbb,
+        0 4px 0 #b9b9b9,
+        0 5px 0 #aaa,
+        0 6px 1px rgba(0, 0, 0, .1),
+        0 0 5px rgba(0, 0, 0, .1),
+        0 1px 3px rgba(0, 0, 0, .3),
+        0 3px 5px rgba(0, 0, 0, .2),
+        0 5px 10px rgba(0, 0, 0, .25),
+        0 10px 10px rgba(0, 0, 0, .2),
+        0 20px 20px rgba(0, 0, 0, .15);
     transform-style: preserve-3d;
     display: inline-block;
 }
