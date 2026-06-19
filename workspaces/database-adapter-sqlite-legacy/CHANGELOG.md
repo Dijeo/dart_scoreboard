@@ -1,5 +1,28 @@
 # Changelog
 
+## [2.8.0](https://github.com/Dijeo/dart_scoreboard/compare/database-adapter-sqlite-legacy-v2.7.1...database-adapter-sqlite-legacy-v2.8.0) (2026-06-19)
+
+
+### Features
+
+* move CLI to own package ([#827](https://github.com/Dijeo/dart_scoreboard/issues/827)) ([517e7d0](https://github.com/Dijeo/dart_scoreboard/commit/517e7d0f4dcea97cd681a07813a254f7c204d37a))
+* move default database adapter to own package ([#821](https://github.com/Dijeo/dart_scoreboard/issues/821)) ([2527f15](https://github.com/Dijeo/dart_scoreboard/commit/2527f151737971a9dbde5f686f97edf48c48735b))
+* npm trusted publish ([#872](https://github.com/Dijeo/dart_scoreboard/issues/872)) ([9eccbfb](https://github.com/Dijeo/dart_scoreboard/commit/9eccbfb21d091660214f7279341cd1d9f2af70ff))
+* support Node 24 (and other chores) ([#870](https://github.com/Dijeo/dart_scoreboard/issues/870)) ([5d3b479](https://github.com/Dijeo/dart_scoreboard/commit/5d3b47910f6dc04bb7a53d0cabfa0792b0dd4328))
+
+
+### Bug Fixes
+
+* **deps:** bump better-sqlite3 and typeorm ([#850](https://github.com/Dijeo/dart_scoreboard/issues/850)) ([926c2cc](https://github.com/Dijeo/dart_scoreboard/commit/926c2cc0ca94e6df6437ad0323ad0b226e6f79ca))
+
+
+### Dependencies
+
+* The following workspace dependencies were updated
+  * dependencies
+    * @nodecg/database-adapter-types bumped from 2.7.0 to 2.8.0
+    * @nodecg/internal-util bumped from 2.7.1 to 2.8.0
+
 ## [2.7.1](https://github.com/nodecg/nodecg/compare/database-adapter-sqlite-legacy-v2.7.0...database-adapter-sqlite-legacy-v2.7.1) (2025-11-22)
 
 
